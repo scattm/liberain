@@ -29,24 +29,24 @@ AccSignUp = React.createClass({
       errors.passconfirm = 'Password mismatched';
     }
 
-    if (! _.isEmpty(errors)) {
-      return;
+    if (_.isEmpty(errors)) {
+      Accounts.createUser({
+        email: email,
+        password: password
+      }, error => {
+        if (error) {
+          this.setState({
+            errors: {'none': error.reason}
+          });
+          return;
+        }
+
+        this.props.history.pushState(null, '/');
+      })
     }
-
-    Accounts.createUser({
-      email: email,
-      password: password
-    }, error => {
-      if (error) {
-        this.setState({
-          errors: { 'none': error.reason }
-        });
-
-        return;
-      }
-
-      this.props.history.pushState(null, '/');
-    })
+    else{
+      console.log(errors)
+    }
   },
 
   render() {
@@ -61,7 +61,7 @@ AccSignUp = React.createClass({
             <div style={({paddingTop:'30px'})} className="panel-body">
               <AccErrors errors={this.state.errors} />
 
-              <form className="form-horizontal" onsubmit={ this.onSubmitEvent }>
+              <form className="form-horizontal" onSubmit={ this.onSubmitEvent }>
                 <AccFormInput
                   hasError={!!this.state.errors.email}
                   type="email"

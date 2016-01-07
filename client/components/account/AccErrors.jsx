@@ -4,7 +4,6 @@ AccErrors = React.createClass({
   },
   render() {
     if (isNaN(this.props.errors)) {
-      // Don't render anything
       return <span />
     } else {
       return (

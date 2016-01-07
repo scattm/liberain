@@ -6,6 +6,7 @@ AccSignIn = React.createClass({
       errors: {}
     };
   },
+
   onSubmitEvent(event) {
     event.preventDefault();
 
@@ -22,21 +23,21 @@ AccSignIn = React.createClass({
       errors.password = 'Password required';
     }
 
-    if (! _.isEmpty(errors)) {
-      return;
+    if (_.isEmpty(errors)) {
+      Meteor.loginWithPassword(email, password, (error) => {
+        if (error) {
+          this.setState({
+            errors: {'none': error.reason}
+          });
+          return;
+        }
+
+        this.props.history.pushState(null, '/')
+      });
     }
-
-    Meteor.loginWithPassword(email, password, (error) => {
-      if (error) {
-        this.setState({
-          errors: { 'none': error.reason }
-        });
-
-        return;
-      }
-
-      this.props.history.pushState(null, '/')
-    });
+    else{
+      console.log(errors)
+    }
   },
 
   render() {
@@ -49,7 +50,9 @@ AccSignIn = React.createClass({
             </div>
 
             <div style={({paddingTop:'30px'})} className="panel-body">
-              <form className="form-horizontal" onsubmit={ this.onSubmitEvent }>
+              <AccErrors errors={this.state.errors} />
+
+              <form className="form-horizontal" onSubmit={ this.onSubmitEvent }>
                 <AccFormInput
                   hasError={!!this.state.errors.email}
                   type="email"
