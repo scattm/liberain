@@ -10,6 +10,7 @@ const routes = (
   <Route name="home" path="/" component={AppBody}>
     <IndexRoute component={Hello}/>
     <Route name="signup" path="/signup" component={AccSignUp}/>
+    <Route name="signin" path="/signin" component={AccSignIn}/>
   </Route>
 );
 

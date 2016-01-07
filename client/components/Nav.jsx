@@ -11,6 +11,7 @@ Nav = React.createClass({
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
               <li><Link to="/signup">Sign Up</Link></li>
+              <li><Link to="/signin">Sign In</Link></li>
               <li><Link to="/message">Liber Massage</Link></li>
             </ul>
           </div>
