@@ -3,7 +3,7 @@ AccErrors = React.createClass({
     errors: React.PropTypes.object
   },
   render() {
-    if (isNaN(this.props.errors)) {
+    if (Object.keys(this.props.errors).length == 0) {
       return <span />
     } else {
       return (

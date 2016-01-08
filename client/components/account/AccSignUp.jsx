@@ -9,11 +9,9 @@ AccSignUp = React.createClass({
   onSubmitEvent(event) {
     event.preventDefault();
 
-    console.log(event)
-
     const email = event.target.email.value;
-    const password = event.target.email.value;
-    const passconfirm = event.target.email.value;
+    const password = event.target.password.value;
+    const passconfirm = event.target.passconfirm.value;
 
     const errors = {};
 
@@ -25,7 +23,7 @@ AccSignUp = React.createClass({
       errors.password = 'Password required';
     }
 
-    if (! passconfirm !== password) {
+    if (passconfirm !== password) {
       errors.passconfirm = 'Password mismatched';
     }
 

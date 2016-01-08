@@ -11,7 +11,7 @@ AccSignIn = React.createClass({
     event.preventDefault();
 
     const email = event.target.email.value;
-    const password = event.target.email.value;
+    const password = event.target.password.value;
 
     const errors = {};
 
