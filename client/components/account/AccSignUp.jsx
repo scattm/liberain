@@ -45,7 +45,7 @@ AccSignUp = React.createClass({
       })
     }
     else{
-      console.log(errors)
+      this.setState({ errors })
     }
   },
 
