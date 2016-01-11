@@ -1,6 +1,20 @@
 const Link = ReactRouter.Link;
 
 Nav = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData: function() {
+    var user = Meteor.user();
+    return {
+      user: user
+    }
+  },
+
+  signout: function(event) {
+    event.preventDefault()
+    Meteor.logout()
+  },
+
   render() {
     return(
       <nav className="navbar navbar-default">
@@ -10,9 +24,13 @@ Nav = React.createClass({
           </div>
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li><Link to="/signup">Sign Up</Link></li>
-              <li><Link to="/signin">Sign In</Link></li>
-              <li><Link to="/message">Liber Massage</Link></li>
+              { this.data.user ?
+                <li><Link to="#" onClick={this.signout}>Sign Out</Link></li> :
+                <li>
+                  <Link to="/signin">Sign In</Link>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+              }
             </ul>
           </div>
         </div>
