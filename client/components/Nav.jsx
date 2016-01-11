@@ -26,10 +26,10 @@ Nav = React.createClass({
             <ul className="nav navbar-nav">
               { this.data.user ?
                 <li><Link to="#" onClick={this.signout}>Sign Out</Link></li> :
-                <li>
-                  <Link to="/signin">Sign In</Link>
-                  <Link to="/signup">Sign Up</Link>
-                </li>
+                <li><Link to="/signin">Sign In</Link></li>
+              }
+              { this.data.user ? "" :
+                <li><Link to="/signup">Sign Up</Link></li>
               }
             </ul>
           </div>
