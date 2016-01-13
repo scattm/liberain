@@ -3,7 +3,6 @@ Hello = React.createClass({
 
   getMeteorData: function() {
     var user = Meteor.user();
-    console.log(user);
     return {
       user: user
     }

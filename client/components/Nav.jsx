@@ -39,7 +39,7 @@ Nav = React.createClass({
                       aria-haspopup="true" aria-expanded="false">Memo Book <span className="caret"/></Link>
                 <ul className="dropdown-menu">
                   <li role="separator" className="divider"/>
-                  <li><Link to="/book/create">Create</Link></li>
+                  <li><Link to="/book_create">Create</Link></li>
                 </ul>
               </li>
               { this.data.user ?

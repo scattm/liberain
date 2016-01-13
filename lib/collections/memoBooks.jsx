@@ -1,0 +1,1 @@
+MemoBooks = new Mongo.Collection('memoBooks')
