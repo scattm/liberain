@@ -11,7 +11,8 @@ AccSignUp = React.createClass({
 
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const passconfirm = event.target.passconfirm.value;
+    const passConfirm = event.target.passConfirm.value;
+    const displayName = event.target.displayName.value;
 
     const errors = {};
 
@@ -19,18 +20,23 @@ AccSignUp = React.createClass({
       errors.email = 'Email required';
     }
 
+    if (! displayName) {
+      errors.displayName = 'Display Name required';
+    }
+
     if (! password) {
       errors.password = 'Password required';
     }
 
-    if (passconfirm !== password) {
-      errors.passconfirm = 'Password mismatched';
+    if (passConfirm !== password) {
+      errors.passConfirm = 'Password mismatched';
     }
 
     if (_.isEmpty(errors)) {
       Accounts.createUser({
         email: email,
-        password: password
+        password: password,
+        displayName: displayName
       }, error => {
         if (error) {
           this.setState({
@@ -69,6 +75,14 @@ AccSignUp = React.createClass({
                 />
 
                 <AccFormInput
+                  hasError={!!this.state.errors.displayName}
+                  type="text"
+                  name="displayName"
+                  label="Display Name"
+                  iconClass="glyphicon glyphicon-user"
+                />
+
+                <AccFormInput
                   hasError={!!this.state.errors.password}
                   type="password"
                   name="password"
@@ -77,9 +91,9 @@ AccSignUp = React.createClass({
                 />
 
                 <AccFormInput
-                  hasError={!!this.state.errors.passconfirm}
+                  hasError={!!this.state.errors.passConfirm}
                   type="password"
-                  name="passconfirm"
+                  name="passConfirm"
                   label="Confirm Password"
                   iconClass="glyphicon glyphicon-lock"
                 />

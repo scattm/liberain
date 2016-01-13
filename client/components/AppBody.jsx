@@ -3,9 +3,7 @@ AppBody = React.createClass({
     return(
       <div>
         <Nav />
-        <div className="container">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

@@ -9,8 +9,9 @@ Hello = React.createClass({
   },
 
   render() {
+    console.log(this.data.user)
     return(
-      <div>
+      <div className="container">
         {this.data.user ?
           <h1>Welcome, {this.data.user.emails[0].address}</h1> :
           <h1>Homepage is being implemented</h1>
