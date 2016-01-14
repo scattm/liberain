@@ -12,6 +12,7 @@ const routes = (
     <IndexRoute component={Hello}/>
     <Redirect from="/book" to="/"/>
     <Route name="BookCreate" path="/book/create" component={MemoCreate}/>
+    <Route name="BookView" path="/book/:id" component={MemoView}/>
     <Route name="SignUp" path="/signup" component={AccSignUp}/>
     <Route name="SignIn" path="/signin" component={AccSignIn}/>
   </Route>
