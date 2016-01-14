@@ -49,7 +49,7 @@ AccSignUp = React.createClass({
       })
     }
     else{
-      this.setState({ errors })
+      this.setState({ errors });
     }
   },
 
@@ -63,7 +63,7 @@ AccSignUp = React.createClass({
             </div>
 
             <div style={({paddingTop:'30px'})} className="panel-body">
-              <AccErrors errors={this.state.errors} />
+              <FormErrors errors={this.state.errors} />
 
               <form className="form-horizontal" onSubmit={ this.onSubmitEvent }>
                 <AccFormInput

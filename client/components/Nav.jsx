@@ -5,8 +5,13 @@ Nav = React.createClass({
 
   getMeteorData: function() {
     var user = Meteor.user();
+    Meteor.subscribe("memoBooks");
+
+    var memoList = MemoBooks.find().fetch();
+
     return {
-      user: user
+      user: user,
+      memoList: memoList
     }
   },
 
@@ -38,8 +43,17 @@ Nav = React.createClass({
                 <Link to="#" className="dropdown-toggle" role="button" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">Memo Book <span className="caret"/></Link>
                 <ul className="dropdown-menu">
+                  { this.data.memoList.length > 0 ?
+                    _.values(this.data.memoList).map(function (memoBook) {
+                      return (
+                        <li key={memoBook._id}>
+                          <Link to={"/book/" + memoBook._id}>{memoBook.name}</Link>
+                        </li>
+                      );
+                    }) : ''
+                  }
                   <li role="separator" className="divider"/>
-                  <li><Link to="/book_create">Create</Link></li>
+                  <li><Link to="/book/create">Create</Link></li>
                 </ul>
               </li>
               { this.data.user ?

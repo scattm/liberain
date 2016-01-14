@@ -1,4 +1,4 @@
-AccErrors = React.createClass({
+FormErrors = React.createClass({
   propTypes: {
     errors: React.PropTypes.object
   },

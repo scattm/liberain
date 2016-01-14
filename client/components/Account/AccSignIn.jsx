@@ -50,7 +50,7 @@ AccSignIn = React.createClass({
             </div>
 
             <div style={({paddingTop:'30px'})} className="panel-body">
-              <AccErrors errors={this.state.errors} />
+              <FormErrors errors={this.state.errors} />
 
               <form className="form-horizontal" onSubmit={ this.onSubmitEvent }>
                 <AccFormInput

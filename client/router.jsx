@@ -9,7 +9,7 @@ const createHistory = ReactRouter.history.createHistory;
 const routes = (
   <Route name="Home" path="/" component={AppBody}>
     <IndexRoute component={Hello}/>
-    <Route name="BookCreate" path="/book_create" component={MemoCreate}/>
+    <Route name="BookCreate" path="/book/create" component={MemoCreate}/>
     <Route name="SignUp" path="/signup" component={AccSignUp}/>
     <Route name="SignIn" path="/signin" component={AccSignIn}/>
   </Route>
