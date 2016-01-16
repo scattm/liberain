@@ -15,7 +15,7 @@ Nav = React.createClass({
     }
   },
 
-  signout: function(event) {
+  signOut: function(event) {
     event.preventDefault()
     Meteor.logout()
   },
@@ -57,7 +57,7 @@ Nav = React.createClass({
                 </ul>
               </li>
               { this.data.user ?
-                <li><Link to="#" onClick={this.signout}>Sign Out</Link></li> :
+                <li><Link to="#" onClick={this.signOut}>Sign Out</Link></li> :
                 <li><Link to="/signin">Sign In</Link></li>
               }
               { this.data.user ? "" :

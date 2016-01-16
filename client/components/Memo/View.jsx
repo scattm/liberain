@@ -1,6 +1,12 @@
 MemoView = React.createClass({
   mixins: [ReactMeteorData],
 
+  getInitialState: function () {
+    return {
+      memoView: 'feed'
+    };
+  },
+
   getMeteorData: function () {
     var ret = {
       isAuthenticate: Meteor.userId() !== null
@@ -26,6 +32,20 @@ MemoView = React.createClass({
   }
   ,
 
+  setViewFeed: function (event) {
+    event.preventDefault();
+    this.setState(
+      {memoView: 'feed'}
+    )
+  },
+
+  setViewTimeLine: function (event) {
+    event.preventDefault();
+    this.setState(
+      {memoView: 'timeline'}
+    )
+  },
+
   render: function () {
     return (
       <div className="row">
@@ -44,10 +64,12 @@ MemoView = React.createClass({
           <div className="row">
             <div className="col-sm-3 col-md-2 sidebar">
               <ul className="nav nav-sidebar">
-                <li className="active"><a href="#">Overview <span className="sr-only">(current)</span></a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Export</a></li>
+                <li className={this.state.memoView == 'feed' ? 'active' : ''}>
+                  <a href="#" onClick={this.setViewFeed}>Feed</a>
+                </li>
+                <li className={this.state.memoView == 'timeline' ? 'active' : ''}>
+                  <a href="#" onClick={this.setViewTimeLine}>Time line</a>
+                </li>
               </ul>
             </div>
             <div className="col-sm-9 col-md-10 main">
