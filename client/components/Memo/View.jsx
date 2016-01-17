@@ -72,9 +72,17 @@ MemoView = React.createClass({
                 </li>
               </ul>
             </div>
-            <div className="col-sm-9 col-md-10 main">
-              dsadsadasdasdsasdasdasdasdasdas
-            </div>
+            {this.data.isReady ?
+              <div className="col-sm-9 col-md-10 main">
+                {this.state.memoView == 'feed' ?
+                  <MemoViewFeed id={this.data.memoBook._id}/> :
+                  <MemoViewTimeLine id={this.data.memoBook._id}/>
+                }
+              </div>:
+              <div className="spinners text-center">
+                <div className="spinner spinner-bounce-bottom"></div>
+              </div>
+            }
           </div>
         </div>
       </div>
