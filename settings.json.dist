@@ -1,0 +1,9 @@
+{
+  "cloudinary": {
+    "cloud_name": "viisix_space",
+    "api_key": "****",
+    "api_secret": "****"
+  },
+  "public": {
+  }
+}
