@@ -23,6 +23,24 @@ Meteor.methods(
         createdAt: new Date(),
         owner: Meteor.userId()
       })
+    },
+
+    updateMemoBook: function(memo){
+      if (! Meteor.userId()){
+        throw new Meteor.Error('User is not logged in');
+      }
+
+      if (! memo.name || !memo.description){
+        throw new Meteor.Error('Data corruption');
+      }
+
+      MemoBooks.update(memo._id, {
+        $set: {
+          name: memo.name,
+          description: memo.description,
+          shareWith: memo.shareWith
+        }
+      });
     }
   }
 );

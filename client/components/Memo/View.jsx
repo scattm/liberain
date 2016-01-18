@@ -48,7 +48,7 @@ MemoView = React.createClass({
   render: function () {
     return (
       <div className="row">
-        <div className="jumbotron m-sm-0 border_bottom_blue">
+        <div className="jumbotron jumbotron-small m-sm-0 border_bottom_blue">
           { this.data.isReady ?
             <div className="container">
               <h1>{this.data.memoBook.name}</h1>
@@ -79,7 +79,7 @@ MemoView = React.createClass({
                 switch (this.state.memoView) {
                   case "feed": return <MemoViewFeed id={this.data.memoBook._id}/>
                   case "timeline": return <MemoViewTimeLine id={this.data.memoBook._id}/>
-                  case "edit": return <MemoViewEdit id={this.data.memoBook._id}/>
+                  case "edit": return <MemoViewEdit memoBook={this.data.memoBook}/>
                   default: return <MemoViewFeed id={this.data.memoBook._id}/>
                 }
               })():
