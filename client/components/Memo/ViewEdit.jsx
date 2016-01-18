@@ -61,13 +61,13 @@ MemoViewEdit = React.createClass({
               value={this.props.memoBook.description}
             />
 
-            <MemoEditInput
+            <ShareWithInput
               hasError={!!this.state.errors.shareWith}
               type="textarea"
               name="shareWith"
               label="Share With"
               value={this.props.memoBook.shareWith}
-              placeHolder="nemo@large.ocean"
+              placeholder="nemo@large.ocean"
             />
 
             <div className="form-group">
@@ -94,6 +94,7 @@ MemoEditInput = React.createClass({
   },
   render() {
     let className = "form-group col-md-12";
+
     if (this.props.hasError) {
       className += " has-error";
     }
@@ -106,14 +107,14 @@ MemoEditInput = React.createClass({
             className="form-control"
             name={ this.props.name }
             placeholder={ this.props.placeholder }
-            defaultValue={this.props.value}
+            defaultValue={ this.props.value }
           /> :
           <input
             type={ this.props.type }
             name={ this.props.name }
             placeholder={ this.props.placeholder }
             className="form-control"
-            defaultValue={this.props.value}
+            defaultValue={ this.props.value }
           />
         }
       </div>

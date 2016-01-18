@@ -78,7 +78,7 @@ MemoCreate = React.createClass({
               placeholder="A story about the family of Nemo"
             />
 
-            <MemoCreateInput
+            <ShareWithInput
               hasError={!!this.state.errors.shareWith}
               type="textarea"
               name="shareWith"
