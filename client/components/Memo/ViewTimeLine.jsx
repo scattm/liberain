@@ -5,7 +5,7 @@ MemoViewTimeLine = React.createClass({
 
   render: function() {
     return (
-      <div className="container"><h1>Implementing</h1></div>
+      <div className="col-sm-9 col-md-10 main"><h1>Implementing</h1></div>
     )
   }
 });

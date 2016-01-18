@@ -39,10 +39,9 @@ MemoView = React.createClass({
     )
   },
 
-  setViewTimeLine: function (event) {
-    event.preventDefault();
+  setView: function (view) {
     this.setState(
-      {memoView: 'timeline'}
+      {memoView: view}
     )
   },
 
@@ -65,20 +64,25 @@ MemoView = React.createClass({
             <div className="col-sm-3 col-md-2 sidebar">
               <ul className="nav nav-sidebar">
                 <li className={this.state.memoView == 'feed' ? 'active' : ''}>
-                  <a href="#" onClick={this.setViewFeed}>Feed</a>
+                  <a href="#" onClick={this.setView.bind(this, 'feed')}>Feed</a>
                 </li>
                 <li className={this.state.memoView == 'timeline' ? 'active' : ''}>
-                  <a href="#" onClick={this.setViewTimeLine}>Time line</a>
+                  <a href="#" onClick={this.setView.bind(this, 'timeline')}>Time line</a>
+                </li>
+                <li className={this.state.memoView == 'edit' ? 'active' : ''}>
+                  <a href="#" onClick={this.setView.bind(this, 'edit')}>Edit</a>
                 </li>
               </ul>
             </div>
             {this.data.isReady ?
-              <div className="col-sm-9 col-md-10 main">
-                {this.state.memoView == 'feed' ?
-                  <MemoViewFeed id={this.data.memoBook._id}/> :
-                  <MemoViewTimeLine id={this.data.memoBook._id}/>
+              (() => {
+                switch (this.state.memoView) {
+                  case "feed": return <MemoViewFeed id={this.data.memoBook._id}/>
+                  case "timeline": return <MemoViewTimeLine id={this.data.memoBook._id}/>
+                  case "edit": return <MemoViewEdit id={this.data.memoBook._id}/>
+                  default: return <MemoViewFeed id={this.data.memoBook._id}/>
                 }
-              </div>:
+              })():
               <div className="spinners text-center">
                 <div className="spinner spinner-bounce-bottom"></div>
               </div>

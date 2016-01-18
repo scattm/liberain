@@ -5,7 +5,7 @@ MemoViewFeed = React.createClass({
 
   render: function() {
     return (
-      <div className="container">View as feed {this.props.id}</div>
+      <div className="col-sm-9 col-md-10 main">View as feed {this.props.id}</div>
     )
   }
 });
