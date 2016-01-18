@@ -1,0 +1,11 @@
+{
+  "name": "liberain",
+  "homepage": "https://github.com/scattm/liberain",
+  "authors": [
+    "Trong-Nghia Nguyen <ntngh2712@gmail.com>"
+  ],
+  "private": true,
+  "dependencies": {
+    "jquery-highlighttextarea": "~3.1.1"
+  }
+}
